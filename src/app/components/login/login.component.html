@@ -1,0 +1,16 @@
+<div class="card offset-3 col-md-6">
+    <div class="card-body">
+        <form id="myForm">
+            <div class="form-group">
+                <label for="exampleUsername">Username</label>
+                <input type="text" class="form-control" id="exampleUsername" name="exampleUsername" aria-describedby="usernameHelp" placeholder="Enter username..." (keyup.enter)="checarUsuario(username.value, password.value)" #username>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="exampleInputPassword1" placeholder="Password" (keyup.enter)="checarUsuario(username.value, password.value)" #password>
+                <small class="text-danger">{{error}}</small>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="checarUsuario(username.value, password.value)">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="float-right">
+    <button type="button" class="btn btn-primary" (click)="addUser()">Añadir</button>
+</div>
+<br/><br/>
+<div class="table-responsive-sm">
+    <table class="table table-hover table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Activo</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Contraseña</th>
+                <th scope="col">Ultima Actualización</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.staff_id}}</td>
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.active}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.last_update | date:'yyyy/MM/dd HH:mm:ss'}}</td>
+                <td><button type="button" class="btn btn-outline-primary" (click)="editUser(user.staff_id)">Editar</button></td>
+                <td><button type="button" class="btn btn-outline-danger" (click)="deleteUser(user.staff_id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
