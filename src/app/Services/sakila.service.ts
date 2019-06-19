@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { IUser } from '../Models/IUser';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -11,6 +11,7 @@ const httpOptions = {
 @Injectable()
 export class SakilaService {
   [x: string]: any;
+  public indexes: Array<IUser> = [];
 
   urlHost: string = 'http://localhost:3000';
 
@@ -40,18 +41,15 @@ export class SakilaService {
     return this.http.post(this.urlHost + '/add', usuario, httpOptions)
       .subscribe(
         data => {
-          console.log('Added')
           this.router.navigate(['home']);
         }
       );
   }
 
   updateUser(usuario: IUser) {
-    console.log(usuario);
     return this.http.put(this.urlHost + '/update', usuario, httpOptions)
       .subscribe(
         data => {
-          console.log('Updated');
           this.router.navigate(['home']);
         }
       );
@@ -61,7 +59,6 @@ export class SakilaService {
     return this.http.delete(this.urlHost + '/delete/' + staff_id)
       .subscribe(
         data => {
-          console.log('deleted');
         }
       )
   }

@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
     this.response = this.sakilaService.getUserByUsernameAndPassword(username, password)
       .subscribe(
         (data) => {
-          console.log(data);
           if (data['error'] !== true) {
             if (data['data'].active === 1) {
               this.error = '';

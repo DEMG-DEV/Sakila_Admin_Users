@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SakilaService } from '../../Services/sakila.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { IUser } from 'src/app/Models/IUser';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  users: any;
+  users: Array<IUser> = [];
 
   constructor(private sakilaService: SakilaService, private router: Router) { }
 
@@ -18,11 +19,10 @@ export class HomeComponent implements OnInit {
   }
 
   getUsers() {
-    this.users = this.sakilaService.getAllUsers()
+    this.sakilaService.getAllUsers()
       .subscribe(
         (data) => {
           this.users = data.data;
-          console.log(data.data);
         }
       );
   }
